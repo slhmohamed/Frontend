@@ -1,0 +1,41 @@
+@import "assets/css/gApi.css";
+@import "assets/css/bootstrap.min.css";
+@import "assets/css/bootstrap-datepicker.css";
+@import "assets/css/flaticon.css";
+@import "assets/css/icomoon.css";
+@import "assets/css/ionicons.min.css";
+@import "assets/css/jquery.timepicker.css";
+@import "assets/css/magnific-popup.css";
+@import "assets/css/open-iconic-bootstrap.min.css";
+@import "assets/css/owl.carousel.min.css";
+@import "assets/css/owl.theme.default.min.css";
+@import "assets/css/aos.css";
+@import "assets/css/animate.css";
+@import "assets/css/style.css";
+@import "assets/css/nucleo-icons.css";
+@import "assets/css/nucleo-svg.css";
+@import "assets/css/gapi2.css";
+@import "assets/css/argon-dashboard.css";
+
+h2{
+    background: #f0f1f1;
+}
+.bg-white {
+    background-color: #ffcf00 !important;
+}
+.bg-primary {
+    background-color: #231e1f !important;
+}
+
+/* backgound scrren login   background: #e9e9e9;*/
+
+/*si le responsable choisit effet en check box on annule le motif de rejet
+==> l'ajout de choix en titre gras
+
+===> l'ajout d'interface pour consulter liste des impayés
+===> button pour le responsable (navige vers interface de l'ajout de l'impayé
+===>sort par date
+
+===> search par nom client ,num compte et check par date
+===> 
+*/

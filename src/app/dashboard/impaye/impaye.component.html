@@ -1,0 +1,276 @@
+<div class="min-height-300 bg-primary position-absolute w-100"></div>
+<aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
+  <div class="sidenav-header">
+    <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+    <a class="navbar-brand m-0"  >
+      <img src="../../../assets/images/agil.png" class="navbar-brand-img h-100" alt="main_logo">
+      <span class="ms-1 font-weight-bold">Gestion des impayés</span>
+    </a>
+  </div>
+ 
+  <hr class="horizontal dark mt-0">
+  <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLink="/list-membre" *ngIf="role=='Admin'">
+        <a class="nav-link  " routerLink="/list-membre">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Liste utilisateur</span>
+        </a>
+      </li>
+      <li class="nav-item" routerLink="/list-client" >
+        <a class="nav-link "  routerLink="/list-client" >
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Liste  client</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link  active"  routerLink="/list-impayé">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Impayé</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/profil">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-app text-info text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Profil</span>
+        </a>
+      </li>
+    
+    
+    
+      <li class="nav-item">
+        <a class="nav-link " style="cursor: pointer;"  (click)="logout()">
+          <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+            <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+          </div>
+          <span class="nav-link-text ms-1">Logout</span>
+        </a>
+      </li>
+   
+    </ul>
+  </div>
+  
+</aside>
+<main class="main-content position-relative border-radius-lg ">
+  <!-- Navbar -->
+  <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+    <div class="container-fluid py-1 px-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" routerLink="/home">Home</a></li>
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Tables</li>
+        </ol>
+        <h6 class="font-weight-bolder text-white mb-0">Tables</h6>
+      </nav>
+     
+    </div>
+  </nav>
+  <!-- End Navbar -->
+  <div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-12">
+            <form  >
+                <div class="card">
+                    <div class="card-header pb-0">
+                     
+                    </div>
+                    <div id="content">
+                      <h1 id="title" class="text-center">Nouveau Impayé</h1>
+                      <p id="description" class="text-center">Ajouter nouveau votre impayé</p>
+                      <form id="survey-form" [formGroup]="impayeForm" (ngSubmit)="onSubmit()">
+                        <div class="form-checks">
+                          <label class="form-check-label" for="" style="    font-style: italic;
+                          font-size: 19px;
+                          color: red;"><B><u>Choix de formulaire</u></B></label>
+                          <div id="newsletter">
+
+                            <div class="custom-control custom-radio">
+                              <input formControlName="type" class="custom-control-input" type="radio" name="type" id="Chéque" value="Chéque" (change)="checkValue($event)" required />
+                              <label class="custom-control-label" for="Chéque">
+                                Chéque
+                              </label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                              <input formControlName="type" class="custom-control-input" type="radio" name="type" id="Effet" value="Effet" (change)="checkValue($event)" required />
+                              <label class="custom-control-label" for="Effet">
+                                Effet
+                              </label>
+                            </div>
+ 
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div id="info" class="col">
+                            <label class="form-check-label" for="" style="    font-style: italic;
+                            font-size: 19px;
+                            color: red;"><B><u>Client</u></B></label>
+                            <div class="form-group">
+                              <label id="name-label" for="name">&#8727; N° compte</label>
+                              <input formControlName="num_compte" type="text" id="name" class="form-control" placeholder="enter your name" autofocus required />
+                            </div>
+                           
+                              <div class="form-group">
+                                <label id="dropdown-label" for="dropdown">&#8727;Client</label>
+                                <select id="dropdown" class="form-control form-control-sm"
+                                 formControlName="client"  (change)="onChange($event.target.value)"
+                                 >
+                                  <option value="" disabled selected>select client</option>
+
+                                  <ng-container *ngFor="let item of clients">
+                                  
+                                  <option [value]="item._id">{{item.firstName}} {{item.lastName}}</option>
+                                </ng-container>
+                                  
+                                 
+                                </select>
+                              </div>   
+
+                              <div class="form-group">
+                                <label id="dropdown-label" for="dropdown">&#8727;Banque SNDP</label>
+                                <select formControlName="banque_sndp" id="dropdown" class="form-control form-control-sm">
+                                  
+                                  <option value="BIAT">Biat</option>
+                                  <option value="ATB">ATB</option>
+                                  
+                                </select>
+                              </div>
+                           
+                            <div class="form-group">
+                                <label id="dropdown-label" for="dropdown">&#8727;Banque client</label>
+                                <select formControlName="banque_client"   id="dropdown" class="form-control form-control-sm">
+                                   
+                                  <option value="" disabled selected>{{client_Banque}}</option>
+                                   
+                                </select>
+                              </div>   
+                         
+                                      
+                          </div>
+                          <div id="questionnaire" class="col">
+                            <label class="form-check-label" for="" style="    font-style: italic;
+                            font-size: 19px;
+                            color: red;"><B><u>Document</u></B></label>
+                           
+                            <div class="form-group">
+                              <label id="name-label" for="name">&#8727; N° Document : </label>
+                              <input type="text" formControlName="num_document" id="name" class="form-control" placeholder="enter your name" autofocus required />
+                            </div>
+ 
+                            <div class="form-group">
+                              <label id="name-label" for="name">&#8727; Date emission</label>
+                              <input formControlName="dateEmision" type="date" id="name" class="form-control" placeholder="enter your name" autofocus required />
+                            </div>
+
+                            <div class="form-group">
+                              <label id="name-label" for="name">&#8727; Date arrive</label>
+                              <input formControlName="dateArrive" type="date" id="name" class="form-control" placeholder="enter your name" autofocus required />
+                            </div>
+
+                            <div class="form-group">
+                              <label id="name-label" for="name">&#8727; Montant</label>
+                              <input formControlName="montant" type="text" id="name" class="form-control" placeholder="enter your name" autofocus required />
+                            </div>
+
+                            <ng-container *ngIf="motif">
+
+                            
+                            <div class="form-group">
+                              <label id="dropdown-label" for="dropdown">&#8727;Motif de rejet</label>
+                              <select formControlName="motif" id="dropdown" class="form-control form-control-sm">
+                                <option value="" disabled selected>select moftif de rejet...</option>
+                                <option value="Sans prevision">Sans prevision</option>
+                                <option value="Signature non conforme">Signature non conforme</option>
+                                <option value="Falsifié ">Falsifié </option>
+                                <option value="Emis au-delà de la date limitée">Emis au-delà de la date limitée</option>
+                                  
+                              </select>
+                            </div>
+                          </ng-container>
+
+
+
+                            <div class="custom-control custom-radio">
+                              <input formControlName="envoie" class="custom-control-input" type="radio" name="radiosX" id="radio1X" value="Envoyer au Destinaires"     />
+                              <label class="custom-control-label" for="radio1X">
+                                Envoyer au Destinaires
+                              </label>
+                            </div>
+                          
+                            <div class="custom-control custom-radio">
+                              <input formControlName="envoie" class="custom-control-input" type="radio" name="radiosY" id="radio3Y" value="Annuler impayé"   />
+                              <label class="custom-control-label" for="radio3Y">
+                               Annuler impayé
+                              </label>
+                            </div>
+                            <br>
+                          </div>
+                          <div id="comments" class="col">
+                            <label class="form-check-label" for="" style="    font-style: italic;
+                            font-size: 19px;
+                            color: red;"><B><u>Destine à :</u></B></label>
+                            <div class="destination">
+                      
+                              <div class="custom-control custom-radio">
+                                <input formControlName="destination" class="custom-control-input" type="radio" name="radios" id="dvd" value="DVD" required />
+                                <label class="custom-control-label" for="dvd">
+                                  DVD
+                                </label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input formControlName="destination" class="custom-control-input" type="radio" name="radios" id="gaz" value="GAZ" required />
+                                <label class="custom-control-label" for="gaz">
+                                 GAZ
+                                </label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input formControlName="destination" class="custom-control-input" type="radio" name="radios" id="reseau" value="RESEAU" required />
+                                <label class="custom-control-label" for="reseau">
+                                 RESEAU
+                                </label>
+                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label for="textarea">Observation document:</label>
+                              <textarea formControlName="coment" class="form-control" id="textarea" rows="11" placeholder="enter your message..."></textarea>
+                              <small id="submitHelp" class="form-text">&#8727; We'll never share your data with anyone else.</small>
+                            </div>            
+                            <button id="submit" type="submit" class="btn btn-primary">Submit</button>            
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+
+
+                  </div>
+                  
+            </form>
+          </div>
+    </div>
+   
+    <footer class="footer pt-3  ">
+      <div class="container-fluid">
+        <div class="row align-items-center justify-content-lg-between">
+          <div class="col-lg-6 mb-lg-0 mb-4">
+          </div>
+          <div class="col-lg-6">
+            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+</main>
+ 
+
+ 

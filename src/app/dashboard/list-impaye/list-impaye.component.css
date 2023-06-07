@@ -1,0 +1,56 @@
+.input{
+    width: 61%;
+    margin-right: 3%;
+}
+
+
+ 
+.custom-radio .custom-control-label::before {
+    border: 1px solid rgba(67, 198, 172, 1);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+}
+.custom-checkbox .custom-control-label::before {
+    border: 1px solid rgba(67, 198, 172, 1);
+    background: rgba(255, 255, 255, 0.7);
+}
+[type="text"], [type="email"], [type="number"] {
+    font-size: 12px;
+}
+input:hover, textarea:hover, select:hover {
+    border: 1px solid rgba(67, 198, 172, 1);
+}
+#yes {
+    font-weight: bold;
+}
+#submitHelp {
+    color: #555;
+    font-size: 10px;
+}
+#submit {
+    margin-top: 5px;
+    font-size: 14px;
+}
+.form{
+    width: 100%;
+    display: flex;
+}
+.b-search{
+    margin-top: 10px !important;
+    width: 19% !important;
+    height: 56% !important;
+    padding-top: 3px !important;
+}
+.select{
+    width: 128px !important;
+    height: 36px !important;
+}
+
+.rapportB{
+    margin-left: -188px;
+    background: red;
+}

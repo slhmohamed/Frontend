@@ -1,0 +1,19 @@
+.items{
+    display: flex !important;
+    /* justify-content: start; */
+    width: 153% !important;
+}
+.left{
+    margin-left: 10% !important;
+}
+
+.title{
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: -2%;
+    font-size: 34px;
+}
+.button-s{
+    background: #ffcf00 !important;
+    border: none !important;
+}
